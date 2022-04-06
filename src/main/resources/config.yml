@@ -1,0 +1,4 @@
+minHp: 4
+maxHp: 60
+decreaseOnDeath: 2
+increaseOnKill: 2

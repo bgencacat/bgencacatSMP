@@ -1,0 +1,12 @@
+name: bgencacatSMP
+version: '${project.version}'
+main: me.bgencacat.bgencacatsmp.BSMP
+api-version: 1.18
+prefix: bSMP
+authors: [ bgencacat ]
+description: Something that I want to  in game.
+website: bgencacat.me
+commands:
+  reset:
+    description: bgencacat'ın reset komutu.
+    usage: /<command> <playername>

@@ -15,17 +15,17 @@ public class ResetCommand implements CommandExecutor {
 
         if( !(sender instanceof Player) ) return false;
 
-        if( args.length < 1 ) {
+        if( !sender.isOp() ) {
 
-            sender.sendMessage(ChatColor.RED + "Bir oyuncu adı yazman gerekiyor.");
+            sender.sendMessage(ChatColor.RED + "Bu komutu kullanmak için yetkin yok.");
 
             return true;
 
         }
 
-        if( !sender.isOp() ) {
+        if( args.length < 1 ) {
 
-            sender.sendMessage(ChatColor.RED + "Bu komutu kullanmak için yetkin yok.");
+            sender.sendMessage(ChatColor.RED + "Bir oyuncu adı yazman gerekiyor.");
 
             return true;
 

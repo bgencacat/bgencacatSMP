@@ -35,12 +35,15 @@ public final class BSMP extends JavaPlugin {
 
         tabManager = new TabManager();
 
+        ItemManager.init();
+
         registerListeners();
         registerCommands();
     }
 
     private void registerListeners()
     {
+
         Bukkit.getPluginManager().registerEvents(new EntityDeathListener(), this);
         Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
         Bukkit.getPluginManager().registerEvents(new LeaveListener(), this);
@@ -49,6 +52,8 @@ public final class BSMP extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EntityDamageListener(), this);
         Bukkit.getPluginManager().registerEvents(new ProjectileHitListener(), this);
         Bukkit.getPluginManager().registerEvents(new PotionSplashListener(), this);
+        Bukkit.getPluginManager().registerEvents(new ItemConsumeListener(), this);
+
     }
 
     private void registerCommands()

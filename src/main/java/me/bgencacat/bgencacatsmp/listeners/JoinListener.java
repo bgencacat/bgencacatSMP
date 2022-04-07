@@ -25,6 +25,8 @@ public class JoinListener implements Listener {
         TextComponent joinMessage = (TextComponent) e.getPlayer().displayName().append(Component.text(" giriş yaptı").color(TextColor.color(94, 153, 247)));
         e.joinMessage(joinMessage);
 
+        BSMP.getPlugin().getTabManager().setPlayerList(e.getPlayer());
+
         if(!e.getPlayer().hasPlayedBefore())
         {
             Location randomLocation = TeleportUtils.findSafeLocation(e.getPlayer());

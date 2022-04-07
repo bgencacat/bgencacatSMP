@@ -14,10 +14,17 @@ public final class BSMP extends JavaPlugin {
 
     public static HashMap<Player, Color> chatColors = new HashMap<Player, Color>();
 
+    private TabManager tabManager;
     private static BSMP plugin;
+
+
     public static BSMP getPlugin() {
         return plugin;
     }
+
+    public TabManager getTabManager() { return tabManager; }
+
+
 
     @Override
     public void onEnable() {
@@ -25,6 +32,8 @@ public final class BSMP extends JavaPlugin {
 
         getConfig().options().copyDefaults();
         saveDefaultConfig();
+
+        tabManager = new TabManager();
 
         registerListeners();
         registerCommands();

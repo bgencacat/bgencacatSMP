@@ -16,6 +16,9 @@ public class RespawnListener implements Listener {
     public void onPlayerRespawn(PlayerRespawnEvent e)
     {
         Player p = e.getPlayer();
+
+        if( p.getBedSpawnLocation() != null ) return;
+
         PersistentDataContainer data = p.getPersistentDataContainer();
         int locX = data.get(new NamespacedKey(BSMP.getPlugin(), "respawnLocationX"), PersistentDataType.INTEGER);
         int locY = data.get(new NamespacedKey(BSMP.getPlugin(), "respawnLocationY"), PersistentDataType.INTEGER);

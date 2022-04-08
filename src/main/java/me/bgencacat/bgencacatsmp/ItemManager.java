@@ -18,6 +18,7 @@ import java.util.List;
 public class ItemManager {
 
     public static ItemStack heartApple;
+    public static NamespacedKey heartAppleKey = NamespacedKey.minecraft("heart_apple");
 
     public static void init() {
         createHeartApple();
@@ -47,7 +48,7 @@ public class ItemManager {
 
         // Recipe
 
-        ShapelessRecipe sr = new ShapelessRecipe(NamespacedKey.minecraft("heart_apple"), item);
+        ShapelessRecipe sr = new ShapelessRecipe(heartAppleKey, item);
         sr.addIngredient(2, Material.GHAST_TEAR);
         sr.addIngredient(2, Material.NETHERITE_SCRAP);
         sr.addIngredient(1, Material.EGG);

@@ -1,12 +1,15 @@
 package me.bgencacat.bgencacatsmp.commands;
 
 import me.bgencacat.bgencacatsmp.BSMP;
+import me.bgencacat.bgencacatsmp.utils.PlayerUtils;
 import net.md_5.bungee.api.ChatColor;
+import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.persistence.PersistentDataContainer;
 import org.jetbrains.annotations.NotNull;
 
 public class ResetCommand implements CommandExecutor {
@@ -31,15 +34,23 @@ public class ResetCommand implements CommandExecutor {
 
         }
 
-        for( Player player : BSMP.getPlugin().getServer().getOnlinePlayers()) {
+        int i = 0;
+        for( Player p : BSMP.getPlugin().getServer().getOnlinePlayers()) {
 
-            if( !args[0].equalsIgnoreCase(player.getName()) ) continue;
+            if( !args[0].equalsIgnoreCase(p.getName()) ) continue;
 
-            sender.sendMessage(player.getName() + "" + ChatColor.GREEN + " adlı oyuncunun özellikleri sıfırlandı");
 
-            player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(20);
+            sender.sendMessage(p.getName() + "" + ChatColor.GREEN + " adlı oyuncunun özellikleri sıfırlandı");
+
+            PlayerUtils.resetPlayer(p);
+            PlayerUtils.startAsNewPlayer(p);
+
+            i++;
 
         }
+
+        if (i < 1) sender.sendMessage(ChatColor.RED + "Bu isimde bir oyuncu bulunamadı.");
+
 
         return true;
     }

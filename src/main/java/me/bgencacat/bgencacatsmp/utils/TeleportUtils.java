@@ -32,7 +32,7 @@ public class TeleportUtils {
         z = random.nextInt(25000);
         y = 150;
 
-        Location randomLocation = new Location(player.getWorld(), x, y, z);
+        Location randomLocation = new Location(player.getWorld(), x * (random.nextBoolean() ? -1 : 1), y, z * (random.nextBoolean() ? -1 : 1));
         y = randomLocation.getWorld().getHighestBlockYAt(randomLocation);
         randomLocation.setY(y);
 

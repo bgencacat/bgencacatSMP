@@ -46,6 +46,8 @@ public class EntityDeathListener implements Listener {
                 k.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(killerHP + plugin.getConfig().getDouble("increaseOnKill"));
                 k.sendMessage(ChatColor.GREEN + "Birini öldürdüğün için " + (int) plugin.getConfig().getDouble("increaseOnKill")/2 + " kalp kazandın");
 
+            } else {
+                k.sendMessage(ChatColor.RED + "Öldürdüğün oyuncununun veya senin sahip olduğun kalp sayısının limite ulaşmasından dolayı kalp alış-verişi olmadı.");
             }
 
             if( killerHP >= plugin.getConfig().getDouble("maxHp") ) k.sendMessage(ChatUtils.warningColor + "Canın " + (int) plugin.getConfig().getDouble("maxHp")/2 + "'dan yüksek veya eşit olduğu için daha fazla can toplayamazsın.");

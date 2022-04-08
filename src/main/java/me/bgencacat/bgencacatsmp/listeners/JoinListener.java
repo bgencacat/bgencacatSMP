@@ -1,7 +1,9 @@
 package me.bgencacat.bgencacatsmp.listeners;
 
 import me.bgencacat.bgencacatsmp.BSMP;
+import me.bgencacat.bgencacatsmp.ItemManager;
 import me.bgencacat.bgencacatsmp.utils.ChatUtils;
+import me.bgencacat.bgencacatsmp.utils.PlayerUtils;
 import me.bgencacat.bgencacatsmp.utils.TeleportUtils;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
@@ -22,22 +24,17 @@ public class JoinListener implements Listener {
 
         ChatUtils.GiveChatAndDisplayNameColors(e.getPlayer());
 
-        TextComponent joinMessage = (TextComponent) e.getPlayer().displayName().append(Component.text(" giriş yaptı").color(TextColor.color(94, 153, 247)));
+        TextComponent joinMessage = (TextComponent) e.getPlayer().displayName().append( Component.text(" giriş yaptı").color(TextColor.color(94, 153, 247)) );
         e.joinMessage(joinMessage);
 
         BSMP.getPlugin().getTabManager().setPlayerList(e.getPlayer());
 
-        if(!e.getPlayer().hasPlayedBefore())
-        {
-            Location randomLocation = TeleportUtils.findSafeLocation(e.getPlayer());
+        e.getPlayer().discoverRecipe(ItemManager.heartAppleKey);
 
-            e.getPlayer().teleport(randomLocation);
+        if( !e.getPlayer().hasPlayedBefore() ) {
 
-            PersistentDataContainer data = e.getPlayer().getPersistentDataContainer();
+            PlayerUtils.startAsNewPlayer(e.getPlayer());
 
-            data.set(new NamespacedKey(BSMP.getPlugin(), "respawnLocationX"), PersistentDataType.INTEGER, randomLocation.getBlockX());
-            data.set(new NamespacedKey(BSMP.getPlugin(), "respawnLocationY"), PersistentDataType.INTEGER, randomLocation.getBlockY());
-            data.set(new NamespacedKey(BSMP.getPlugin(), "respawnLocationZ"), PersistentDataType.INTEGER, randomLocation.getBlockZ());
         }
 
     }

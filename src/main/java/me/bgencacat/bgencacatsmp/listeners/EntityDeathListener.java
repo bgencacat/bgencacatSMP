@@ -18,6 +18,7 @@ import org.bukkit.plugin.Plugin;
 public class EntityDeathListener implements Listener {
 
     Plugin plugin = BSMP.getPlugin();
+
     @EventHandler
     public void onEntityDeath(PlayerDeathEvent e) {
 
@@ -25,32 +26,33 @@ public class EntityDeathListener implements Listener {
 
         double victimHP = v.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue();
 
-        if( victimHP <= plugin.getConfig().getDouble("minHp") ) {
+        if (victimHP <= plugin.getConfig().getDouble("minHp")) {
 
             v.sendMessage(ChatUtils.warningColor + "Kaybedecek kalbin kalmadığı için sana karışmadık");
 
         } else {
 
             v.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(victimHP - plugin.getConfig().getDouble("decreaseOnDeath"));
-            v.sendMessage(ChatColor.RED + "Öldüğün için " + (int) plugin.getConfig().getDouble("decreaseOnDeath")/2 + " kalbin eksildi");
+            v.sendMessage(ChatColor.RED + "Öldüğün için " + (int) plugin.getConfig().getDouble("decreaseOnDeath") / 2 + " kalbin eksildi");
 
         }
 
-        if( e.getEntity().getKiller() != null && e.getEntity().getKiller() instanceof Player ) {
+        if (e.getEntity().getKiller() != null && e.getEntity().getKiller() instanceof Player) {
 
             Player k = e.getEntity().getKiller();
             double killerHP = k.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue();
 
-            if(victimHP > plugin.getConfig().getDouble("minHp") && killerHP < plugin.getConfig().getDouble("maxHp")) {
+            if (victimHP > plugin.getConfig().getDouble("minHp") && killerHP < plugin.getConfig().getDouble("maxHp")) {
 
                 k.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(killerHP + plugin.getConfig().getDouble("increaseOnKill"));
-                k.sendMessage(ChatColor.GREEN + "Birini öldürdüğün için " + (int) plugin.getConfig().getDouble("increaseOnKill")/2 + " kalp kazandın");
+                k.sendMessage(ChatColor.GREEN + "Birini öldürdüğün için " + (int) plugin.getConfig().getDouble("increaseOnKill") / 2 + " kalp kazandın");
 
             } else {
                 k.sendMessage(ChatColor.RED + "Öldürdüğün oyuncununun veya senin sahip olduğun kalp sayısının limite ulaşmasından dolayı kalp alış-verişi olmadı.");
             }
 
-            if( killerHP >= plugin.getConfig().getDouble("maxHp") ) k.sendMessage(ChatUtils.warningColor + "Canın " + (int) plugin.getConfig().getDouble("maxHp")/2 + "'dan yüksek veya eşit olduğu için daha fazla can toplayamazsın.");
+            if (killerHP >= plugin.getConfig().getDouble("maxHp"))
+                k.sendMessage(ChatUtils.warningColor + "Canın " + (int) plugin.getConfig().getDouble("maxHp") / 2 + "'dan yüksek veya eşit olduğu için daha fazla can toplayamazsın.");
 
             ItemStack playerHead = new ItemStack(Material.PLAYER_HEAD, 1);
             SkullMeta meta = (SkullMeta) playerHead.getItemMeta();

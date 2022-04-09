@@ -11,9 +11,8 @@ import java.awt.*;
 public class LeaveListener implements Listener {
 
     @EventHandler
-    public void onLeave(PlayerQuitEvent e)
-    {
-        e.setQuitMessage(ChatColor.of(new Color(50, 168, 82, 255)) +  e.getPlayer().getName() + " oyundan ayrıldı");
+    public void onLeave(PlayerQuitEvent e) {
+        e.setQuitMessage(ChatColor.of(new Color(50, 168, 82, 255)) + e.getPlayer().getName() + " oyundan ayrıldı");
         BSMP.chatColors.remove(e.getPlayer());
         System.out.println("Hello");
     }

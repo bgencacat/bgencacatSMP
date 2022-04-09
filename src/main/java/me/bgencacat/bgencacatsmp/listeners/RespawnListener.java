@@ -13,11 +13,10 @@ import org.bukkit.persistence.PersistentDataType;
 public class RespawnListener implements Listener {
 
     @EventHandler
-    public void onPlayerRespawn(PlayerRespawnEvent e)
-    {
+    public void onPlayerRespawn(PlayerRespawnEvent e) {
         Player p = e.getPlayer();
 
-        if( p.getBedSpawnLocation() != null ) return;
+        if (p.getBedSpawnLocation() != null) return;
 
         PersistentDataContainer data = p.getPersistentDataContainer();
         int locX = data.get(new NamespacedKey(BSMP.getPlugin(), "respawnLocationX"), PersistentDataType.INTEGER);

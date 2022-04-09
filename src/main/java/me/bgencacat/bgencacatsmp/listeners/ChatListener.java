@@ -1,7 +1,6 @@
 package me.bgencacat.bgencacatsmp.listeners;
 
 import me.bgencacat.bgencacatsmp.utils.ChatUtils;
-
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;

@@ -11,7 +11,7 @@ import java.util.Random;
 public class TeleportUtils {
     public static HashSet<Material> badBlocks = new HashSet<>();
 
-    static{
+    static {
         badBlocks.add(Material.LAVA);
         badBlocks.add(Material.FIRE);
         badBlocks.add(Material.CACTUS);
@@ -20,7 +20,7 @@ public class TeleportUtils {
     }
 
 
-    public static Location generateLocation(Player player){
+    public static Location generateLocation(Player player) {
         //Generate Random Location
         Random random = new Random();
 
@@ -39,18 +39,18 @@ public class TeleportUtils {
         return randomLocation;
     }
 
-    public static Location findSafeLocation(Player player){
+    public static Location findSafeLocation(Player player) {
 
         Location randomLocation = generateLocation(player);
 
-        while (!isLocationSafe(randomLocation)){
+        while (!isLocationSafe(randomLocation)) {
             //Keep looking for a safe location
             randomLocation = generateLocation(player);
         }
         return randomLocation;
     }
 
-    public static boolean isLocationSafe(Location location){
+    public static boolean isLocationSafe(Location location) {
 
         int x = location.getBlockX();
         int y = location.getBlockY();

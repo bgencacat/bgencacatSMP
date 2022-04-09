@@ -17,23 +17,23 @@ public class ItemConsumeListener implements Listener {
     @EventHandler
     public void onItemConsume(PlayerItemConsumeEvent e) {
 
-        if ( ! (e.getItem().getItemMeta().equals(ItemManager.heartApple.getItemMeta())) ) return;
+        if (!(e.getItem().getItemMeta().equals(ItemManager.heartApple.getItemMeta()))) return;
 
         Player p = e.getPlayer();
 
         double pHp = p.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue();
 
-        if( pHp < plugin.getConfig().getDouble("maxHp") ) {
+        if (pHp < plugin.getConfig().getDouble("maxHp")) {
 
             p.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(pHp + plugin.getConfig().getDouble("increaseOnAppleConsume"));
 
-            p.sendMessage(ChatColor.GREEN + " +" + (int) plugin.getConfig().getDouble("increaseOnAppleConsume")/2 + " kalp kazandın!");
+            p.sendMessage(ChatColor.GREEN + " +" + (int) plugin.getConfig().getDouble("increaseOnAppleConsume") / 2 + " kalp kazandın!");
 
         } else {
 
             e.setCancelled(true);
 
-            p.sendMessage(ChatColor.RED + "Canın zaten en fazla (" + (int) plugin.getConfig().getDouble("maxHp")/2 + ") olduğu için bunu yiyemezsin.");
+            p.sendMessage(ChatColor.RED + "Canın zaten en fazla (" + (int) plugin.getConfig().getDouble("maxHp") / 2 + ") olduğu için bunu yiyemezsin.");
 
         }
 

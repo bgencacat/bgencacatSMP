@@ -11,8 +11,7 @@ public class DamageUtils {
 
     static Plugin plugin = BSMP.getPlugin();
 
-    public static boolean isProtectedFromDamage(Player player)
-    {
+    public static boolean isProtectedFromDamage(Player player) {
         double playerHp = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue();
         return (playerHp <= plugin.getConfig().getDouble("minHp"));
     }

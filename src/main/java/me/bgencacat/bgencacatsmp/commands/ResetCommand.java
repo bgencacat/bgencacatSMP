@@ -3,22 +3,19 @@ package me.bgencacat.bgencacatsmp.commands;
 import me.bgencacat.bgencacatsmp.BSMP;
 import me.bgencacat.bgencacatsmp.utils.PlayerUtils;
 import net.md_5.bungee.api.ChatColor;
-import org.bukkit.NamespacedKey;
-import org.bukkit.attribute.Attribute;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.persistence.PersistentDataContainer;
 import org.jetbrains.annotations.NotNull;
 
 public class ResetCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
-        if( !(sender instanceof Player) ) return false;
+        if (!(sender instanceof Player)) return false;
 
-        if( !sender.isOp() ) {
+        if (!sender.isOp()) {
 
             sender.sendMessage(ChatColor.RED + "Bu komutu kullanmak için yetkin yok.");
 
@@ -26,7 +23,7 @@ public class ResetCommand implements CommandExecutor {
 
         }
 
-        if( args.length < 1 ) {
+        if (args.length < 1) {
 
             sender.sendMessage(ChatColor.RED + "Bir oyuncu adı yazman gerekiyor.");
 
@@ -35,9 +32,9 @@ public class ResetCommand implements CommandExecutor {
         }
 
         int i = 0;
-        for( Player p : BSMP.getPlugin().getServer().getOnlinePlayers()) {
+        for (Player p : BSMP.getPlugin().getServer().getOnlinePlayers()) {
 
-            if( !args[0].equalsIgnoreCase(p.getName()) ) continue;
+            if (!args[0].equalsIgnoreCase(p.getName())) continue;
 
 
             sender.sendMessage(p.getName() + "" + ChatColor.GREEN + " adlı oyuncunun özellikleri sıfırlandı");

@@ -1,7 +1,6 @@
 package me.bgencacat.bgencacatsmp;
 
 import me.bgencacat.bgencacatsmp.commands.ResetCommand;
-import me.bgencacat.bgencacatsmp.commands.TestCommand;
 import me.bgencacat.bgencacatsmp.listeners.*;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -13,17 +12,16 @@ import java.util.HashMap;
 public final class BSMP extends JavaPlugin {
 
     public static HashMap<Player, Color> chatColors = new HashMap<Player, Color>();
-
-    private TabManager tabManager;
     private static BSMP plugin;
-
+    private TabManager tabManager;
 
     public static BSMP getPlugin() {
         return plugin;
     }
 
-    public TabManager getTabManager() { return tabManager; }
-
+    public TabManager getTabManager() {
+        return tabManager;
+    }
 
 
     @Override
@@ -41,8 +39,7 @@ public final class BSMP extends JavaPlugin {
         registerCommands();
     }
 
-    private void registerListeners()
-    {
+    private void registerListeners() {
 
         Bukkit.getPluginManager().registerEvents(new EntityDeathListener(), this);
         Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
@@ -56,8 +53,7 @@ public final class BSMP extends JavaPlugin {
 
     }
 
-    private void registerCommands()
-    {
+    private void registerCommands() {
         getCommand("reset").setExecutor(new ResetCommand());
     }
 

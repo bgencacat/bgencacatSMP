@@ -33,12 +33,9 @@ public class ChatUtils {
     public static void NotifyPlayerIfMentioned(AsyncPlayerChatEvent e) {
         String[] arr = e.getMessage().split(" ");
 
-        for( String word : arr )
-        {
-            for( Player player : BSMP.getPlugin().getServer().getOnlinePlayers() )
-            {
-                if( word.equalsIgnoreCase(player.getName()) )
-                {
+        for (String word : arr) {
+            for (Player player : BSMP.getPlugin().getServer().getOnlinePlayers()) {
+                if (word.equalsIgnoreCase(player.getName())) {
                     player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
                 }
             }
@@ -48,10 +45,10 @@ public class ChatUtils {
     public static void FormatChat(AsyncPlayerChatEvent e) {
         double hp = e.getPlayer().getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue();
         e.setFormat(
-                ChatColor.of(new Color(120, 120, 120)) + "" + (int) hp/2 + "♥ " +
+                ChatColor.of(new Color(120, 120, 120)) + "" + (int) hp / 2 + "♥ " +
                         ChatColor.of(BSMP.chatColors.get(e.getPlayer()).brighter()) + "(%s" + ChatColor.of(BSMP.chatColors.get(e.getPlayer()).brighter()) + ")"
                         + " "
-                        + ChatColor.of(BSMP.chatColors.get(e.getPlayer()).brighter() )
+                        + ChatColor.of(BSMP.chatColors.get(e.getPlayer()).brighter())
                         + e.getMessage());
     }
 

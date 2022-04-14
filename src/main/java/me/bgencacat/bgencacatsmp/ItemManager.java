@@ -48,12 +48,8 @@ public class ItemManager {
         // Recipe
 
         ShapelessRecipe sr = new ShapelessRecipe(heartAppleKey, item);
-        sr.addIngredient(2, Material.GHAST_TEAR);
-        sr.addIngredient(2, Material.NETHERITE_SCRAP);
-        sr.addIngredient(1, Material.EGG);
+        sr.addIngredient(7, Material.GOLD_INGOT);
         sr.addIngredient(1, Material.GOLDEN_APPLE);
-        sr.addIngredient(1, Material.OBSIDIAN);
-        sr.addIngredient(1, Material.COBWEB);
         sr.addIngredient(1, Material.DIAMOND);
 
 
